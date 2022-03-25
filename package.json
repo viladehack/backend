@@ -1,0 +1,21 @@
+{
+  "name": "viladehack-server",
+  "version": "1.0.0",
+  "description": "Server created for the hackathon held in Viladecans on March 25, 26 and 27, 2022.",
+  "main": "index.js",
+  "scripts": {
+    "start": "node src/dist app",
+    "dev": "nodemon src/dist app"
+  },
+  "keywords": [],
+  "author": "Daniel Españadero",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^16.0.0",
+    "express": "^4.17.3"
+  },
+  "devDependencies": {
+    "@types/express": "^4.17.13",
+    "nodemon": "^2.0.15"
+  }
+}
