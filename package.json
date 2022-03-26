@@ -4,15 +4,17 @@
   "description": "Server created for the hackathon held in Viladecans on March 25, 26 and 27, 2022.",
   "main": "index.js",
   "scripts": {
-    "start": "node src/dist app",
-    "dev": "nodemon src/dist app"
+    "start": "node dist/app",
+    "dev": "nodemon dist/app"
   },
   "keywords": [],
   "author": "Daniel Españadero",
   "license": "ISC",
   "dependencies": {
     "dotenv": "^16.0.0",
-    "express": "^4.17.3"
+    "express": "^4.17.3",
+    "mongoose": "^6.2.8",
+    "typescript": "^4.6.3"
   },
   "devDependencies": {
     "@types/express": "^4.17.13",

@@ -3,6 +3,6 @@ import { registerPost } from "../controllers/register";
 
 const router = Router();
 
-router.get('/', registerPost);
+router.post('/', registerPost);
 
 export default router;
