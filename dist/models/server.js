@@ -14,14 +14,17 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = __importDefault(require("express"));
 const config_1 = require("../db/config");
+const cors_1 = __importDefault(require("cors"));
 const register_1 = __importDefault(require("../routes/register"));
 const auth_1 = __importDefault(require("../routes/auth"));
+const upload_1 = __importDefault(require("../routes/upload"));
 const error_404_1 = __importDefault(require("../routes/error-404"));
 class Server {
     constructor() {
         this.path = {
             register: '/register',
-            login: '/login',
+            auth: '/login',
+            upload: '/upload',
             error: '/*'
         };
         this.app = (0, express_1.default)();
@@ -38,10 +41,13 @@ class Server {
     }
     ;
     middlewares() {
+        this.app.use(express_1.default.json());
+        this.app.use((0, cors_1.default)());
     }
     route() {
         this.app.use(this.path.register, register_1.default);
-        this.app.use(this.path.login, auth_1.default);
+        this.app.use(this.path.auth, auth_1.default);
+        this.app.use(this.path.upload, upload_1.default);
         this.app.use(this.path.error, error_404_1.default);
     }
     listen() {

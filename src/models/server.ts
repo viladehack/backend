@@ -1,8 +1,10 @@
 import express, { Application } from 'express';
 import { dbConnectMongo } from '../db/config';
+import cors from 'cors';
 
 import registerRouter from '../routes/register';
 import loginRouter from '../routes/auth';
+import uploadRouter from '../routes/upload';
 import errorRouter from '../routes/error-404';
 
 class Server {
@@ -10,7 +12,8 @@ class Server {
     private port: string;
     private path = {
         register: '/register',
-        login: '/login',
+        auth: '/login',
+        upload: '/upload',
         error: '/*'
     }
 
@@ -29,13 +32,15 @@ class Server {
     };
 
     middlewares() {
-
+        this.app.use(express.json());
+        this.app.use(cors());
     }
 
     route() {
         this.app.use(this.path.register, registerRouter);
-        this.app.use(this.path.login, loginRouter);
-        this.app.use(this.path.error, errorRouter)
+        this.app.use(this.path.auth, loginRouter);
+        this.app.use(this.path.upload, uploadRouter);
+        this.app.use(this.path.error, errorRouter);
     }
 
     listen() {

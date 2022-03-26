@@ -19,7 +19,6 @@ const registerPost = (req, res) => __awaiter(void 0, void 0, void 0, function* (
     try {
         const { firstName, lastName, email, password } = req.body;
         const date = new Date();
-        console.log(req.body);
         const user = yield new user_1.User({ firstName, lastName, email, date, password });
         // Verificar si el correo existe
         const existEmail = yield user_1.User.findOne({ email });
@@ -36,10 +35,10 @@ const registerPost = (req, res) => __awaiter(void 0, void 0, void 0, function* (
         res.status(200).json({ user });
     }
     catch (error) {
-        // throw new Error(error)
-        res.status(500).json({
-            msg: 'No lee'
-        });
+        throw new Error(error);
+        // res.status(500).json({
+        //     msg: 'No lee'
+        // });
     }
     ;
 });
