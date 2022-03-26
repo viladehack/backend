@@ -16,11 +16,13 @@ const express_1 = __importDefault(require("express"));
 const config_1 = require("../db/config");
 const register_1 = __importDefault(require("../routes/register"));
 const auth_1 = __importDefault(require("../routes/auth"));
+const error_404_1 = __importDefault(require("../routes/error-404"));
 class Server {
     constructor() {
         this.path = {
             register: '/register',
-            login: '/login'
+            login: '/login',
+            error: '*'
         };
         this.app = (0, express_1.default)();
         this.port = process.env.PORT;
@@ -40,6 +42,7 @@ class Server {
     route() {
         this.app.use(this.path.register, register_1.default);
         this.app.use(this.path.login, auth_1.default);
+        this.app.use(this.path.error, error_404_1.default);
     }
     listen() {
         this.app.listen(this.port, () => {

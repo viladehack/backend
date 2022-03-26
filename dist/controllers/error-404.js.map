@@ -1,1 +1,1 @@
-{"version":3,"file":"error-404.js","sourceRoot":"","sources":["../../src/controllers/error-404.ts"],"names":[],"mappings":""}
+{"version":3,"file":"error-404.js","sourceRoot":"","sources":["../../src/controllers/error-404.ts"],"names":[],"mappings":";;;AAAO,MAAM,QAAQ,GAAG,CAAC,GAAQ,EAAE,GAAQ,EAAE,EAAE;IAC3C,GAAG,CAAC,MAAM,CAAC,GAAG,CAAC,CAAC,IAAI,CAAC;QACjB,GAAG,EAAE,4BAA4B;KACpC,CAAC,CAAC;AACP,CAAC,CAAC;AAJW,QAAA,QAAQ,YAInB"}

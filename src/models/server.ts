@@ -3,13 +3,15 @@ import { dbConnectMongo } from '../db/config';
 
 import registerRouter from '../routes/register';
 import loginRouter from '../routes/auth';
+import errorRouter from '../routes/error-404';
 
 class Server {
     private app: Application;
     private port: string;
     private path = {
         register: '/register',
-        login: '/login'
+        login: '/login',
+        error: '*'
     }
 
     constructor() {
@@ -33,6 +35,7 @@ class Server {
     route() {
         this.app.use(this.path.register, registerRouter);
         this.app.use(this.path.login, loginRouter);
+        this.app.use(this.path.error, errorRouter)
     }
 
     listen() {
