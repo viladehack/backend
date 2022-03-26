@@ -13,7 +13,7 @@ exports.dbConnectMongo = void 0;
 const mongoose_1 = require("mongoose");
 const dbConnectMongo = () => __awaiter(void 0, void 0, void 0, function* () {
     try {
-        yield (0, mongoose_1.connect)(process.env.MONGODB || 'mongodb://localhost:27017/activa-chat');
+        yield (0, mongoose_1.connect)(process.env.MONGODB || 'mongodb://localhost:27017/viladehack');
         console.log('MongoDB started');
     }
     catch (error) {

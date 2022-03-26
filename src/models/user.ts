@@ -1,9 +1,13 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.User = void 0;
-const mongoose_1 = require("mongoose");
-;
-const UserSchema = new mongoose_1.Schema({
+import { Schema, model, Document } from 'mongoose';
+
+export interface IUser extends Document {
+    email: string;
+    password: string;
+    status: boolean;
+    comparePassword: (password: string) => Promise<Boolean>
+};
+
+const UserSchema: any = new Schema({
     firstName: {
         type: String,
         required: [true, 'first name is required.']
@@ -33,8 +37,10 @@ const UserSchema = new mongoose_1.Schema({
         type: Date,
         required: true
     }
-}, {
-    versionKey: false
-});
-exports.User = (0, mongoose_1.model)('User', UserSchema);
-//# sourceMappingURL=user.js.map
+},
+    {
+        versionKey: false
+    }
+);
+
+export const User = model<IUser>('User', UserSchema);

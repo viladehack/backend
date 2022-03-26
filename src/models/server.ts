@@ -1,4 +1,5 @@
 import express, { Application } from 'express';
+import { dbConnectMongo } from '../db/config';
 
 import registerRouter from '../routes/register';
 
@@ -13,10 +14,15 @@ class Server {
         this.app = express();
         this.port = process.env.PORT as string;
 
+        this.connectMongoDB();
         this.middlewares();
         this.route();
         this.listen();
     }
+
+    async connectMongoDB(){
+        await dbConnectMongo();
+    };
 
     middlewares() {
 

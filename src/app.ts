@@ -1,4 +1,4 @@
-import Server from './model/server';
+import Server from './models/server';
 import 'dotenv/config';
 
 new Server();
