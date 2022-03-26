@@ -15,10 +15,12 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = __importDefault(require("express"));
 const config_1 = require("../db/config");
 const register_1 = __importDefault(require("../routes/register"));
+const auth_1 = __importDefault(require("../routes/auth"));
 class Server {
     constructor() {
         this.path = {
-            register: '/register'
+            register: '/register',
+            login: '/login'
         };
         this.app = (0, express_1.default)();
         this.port = process.env.PORT;
@@ -37,6 +39,7 @@ class Server {
     }
     route() {
         this.app.use(this.path.register, register_1.default);
+        this.app.use(this.path.login, auth_1.default);
     }
     listen() {
         this.app.listen(this.port, () => {

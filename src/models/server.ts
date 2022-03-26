@@ -2,12 +2,14 @@ import express, { Application } from 'express';
 import { dbConnectMongo } from '../db/config';
 
 import registerRouter from '../routes/register';
+import loginRouter from '../routes/auth';
 
 class Server {
     private app: Application;
     private port: string;
     private path = {
-        register: '/register'
+        register: '/register',
+        login: '/login'
     }
 
     constructor() {
@@ -30,6 +32,7 @@ class Server {
 
     route() {
         this.app.use(this.path.register, registerRouter);
+        this.app.use(this.path.login, loginRouter);
     }
 
     listen() {
