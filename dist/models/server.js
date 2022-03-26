@@ -22,7 +22,7 @@ class Server {
         this.path = {
             register: '/register',
             login: '/login',
-            error: '*'
+            error: '/*'
         };
         this.app = (0, express_1.default)();
         this.port = process.env.PORT;

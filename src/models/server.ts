@@ -11,7 +11,7 @@ class Server {
     private path = {
         register: '/register',
         login: '/login',
-        error: '*'
+        error: '/*'
     }
 
     constructor() {
